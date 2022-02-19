@@ -11,8 +11,14 @@ const flash = require('connect-flash');
 const errorController = require('./controllers/error');
 const User = require('./models/user');
 
+const options = {
+  useUnifiedTopology: true,
+  useNewUrlParser: true,
+  family: 4
+};
+
 const MONGODB_URI =
-  'mongodb+srv://Linds:Jlsc4ever@cluster0-ntrwp.mongodb.net/shop';
+  'mongodb+srv://Linds:Jlsc4ever!123@cluster0.xw3hp.mongodb.net/shop';
 
 const app = express();
 const store = new MongoDBStore({
@@ -84,7 +90,7 @@ app.use((error, req, res, next) => {
 });
 
 mongoose
-  .connect(MONGODB_URI)
+.connect(MONGODB_URI, options)
   .then(result => {
     app.listen(3000);
   })
